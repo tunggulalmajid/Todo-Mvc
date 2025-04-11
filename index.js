@@ -3,24 +3,26 @@
 
 const opsi = process.argv[2];
 const params = process.argv.slice(3);
+const Ctodo = require("./controller/CTodo");
+const CTodo = require("./controller/CTodo");
 
 switch (String(opsi).toLowerCase()) {
   case "show":
-    const fs = require('fs');
-    let data = fs.readFileSync('./data.json', 'utf8');
-    let todos = JSON.parse(data);
-    console.log(todos);
-
+    
+    CTodo.show();
     break;
   case "add":
-    console.log("add");
+    
+    CTodo.add(params);
     break;
   case "delete":
-    console.log("delete");
+    
+    CTodo.delete();
     break;
   case "update":
-    console.log("update");
+    
+    CTodo.update();
     break;
   default:
-    console.log("Opsi tidak tersedia");
+    Ctodo.errorMessage("Opsi tidak tersedia");
 }
